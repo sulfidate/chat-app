@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 
+// build Chat-screen as function component
+
 export default function Chat(props) {
   let { name, color } = props.route.params
   console.log('color:', { color })
@@ -9,14 +11,18 @@ export default function Chat(props) {
   useEffect(() => {
     // Set the screen title to the user name entered in the start screen
     props.navigation.setOptions({ title: name })
+    // Set the screen background as chosen from user in the start screen
     props.navigation.setOptions({ backgroundColor: color })
   })
+
+  // render Chat-screen
 
   return (
     <View style={[{ backgroundColor: color }, styles.container]}>
       <Text>Hello {name}, welcome on the Chat!</Text>
       <Text>Your backgroundColor is {color}</Text>
 
+      {/* Button to switch back to start-screen */}
       <Button
         title='<<< Go back'
         onPress={() => props.navigation.navigate('Start')}
@@ -24,6 +30,8 @@ export default function Chat(props) {
     </View>
   )
 }
+
+// Styles for Chat-screen
 
 const styles = StyleSheet.create({
   container: {

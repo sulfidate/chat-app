@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import BackgroundImage from '../img/background-image.png'
 
-// Creating constants that contain background colours for the chat screen
+// Creating constants that contain background colours for the chat screen background
 const colors = {
   black: '#090C08',
   purple: '#474056',
@@ -17,14 +17,18 @@ const colors = {
   green: '#B9C6AE',
 }
 
+// build startscreen as function component
+
 export default function Start(props) {
   const [name, setName] = useState()
   const [color, setColor] = useState()
 
+  // function to navigate the props to the Chat-Screen
   const onStartChatting = () => {
     props.navigation.navigate('Chat', { name: name, color: color })
   }
 
+  // render start-screen
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -79,6 +83,8 @@ export default function Start(props) {
     </View>
   )
 }
+
+// Styles for Start-screen
 
 const styles = StyleSheet.create({
   container: {

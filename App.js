@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import components
+// import components / screens we want to navigate
 import Start from './components/Start'
 import Chat from './components/Chat'
 
