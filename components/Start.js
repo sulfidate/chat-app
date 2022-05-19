@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   StyleSheet,
   View,
@@ -7,81 +7,99 @@ import {
   ImageBackground,
   Pressable,
 } from 'react-native'
+
+// Import the Background Image
 import BackgroundImage from '../img/background-image.png'
 
-// Creating constants that contain background colours for the chat screen background
-const colors = {
-  black: '#090C08',
-  purple: '#474056',
-  grey: '#8A95A5',
-  green: '#B9C6AE',
-}
+// to silence all warnings that contain EventEmitter.removeListener
+import { LogBox } from 'react-native'
+LogBox.ignoreLogs(['EventEmitter.removeListener'])
 
 // build startscreen as function component
+export default class Start extends React.Component {
+  constructor(props) {
+    super(props)
 
-export default function Start(props) {
-  const [name, setName] = useState()
-  const [color, setColor] = useState()
+    this.state = {
+      name: '',
+      bgColor: '',
+    }
+  }
 
-  // function to navigate the props to the Chat-Screen
-  const onStartChatting = () => {
-    props.navigation.navigate('Chat', { name: name, color: color })
+  // function to change state of bgColor for ChatScreen chosen by user
+  setBgColor = (bgColorNew) => {
+    this.setState({ bgColor: bgColorNew })
+  }
+
+  // Creating constants that contain background colours for the chat screen background
+  colors = {
+    black: '#090C08',
+    purple: '#474056',
+    grey: '#8A95A5',
+    green: '#B9C6AE',
   }
 
   // render start-screen
-  return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={BackgroundImage}
-        resizeMode='cover'
-        style={styles.image}
-      >
-        <View style={styles.header}>
-          <Text style={styles.title}>myChat</Text>
-        </View>
-        <View style={styles.wrapper}>
-          <TextInput
-            style={styles.inputName}
-            onChangeText={(name) => setName(name)}
-            placeholder='Your Name'
-          />
-          <View style={styles.colorWrapper}>
-            <Text style={styles.colorText}>Choose Background Color:</Text>
-            <View style={styles.colorContainer}>
-              <Pressable
-                style={[{ backgroundColor: colors.black }, styles.colorbutton]}
-                onPress={(color) => setColor(colors.black)}
-              />
-              <Pressable
-                style={[{ backgroundColor: colors.purple }, styles.colorbutton]}
-                onPress={(color) => setColor(colors.purple)}
-              />
-              <Pressable
-                style={[{ backgroundColor: colors.grey }, styles.colorbutton]}
-                onPress={(color) => setColor(colors.grey)}
-              />
-              <Pressable
-                style={[{ backgroundColor: colors.green }, styles.colorbutton]}
-                onPress={(color) => setColor(colors.green)}
-              />
-            </View>
+  render() {
+    return (
+      <View style={styles.container}>
+        <ImageBackground
+          source={BackgroundImage}
+          resizeMode='cover'
+          style={styles.image}
+        >
+          <View style={styles.header}>
+            <Text style={styles.title}>myChat</Text>
           </View>
-          <Pressable
-            onPress={onStartChatting}
-            style={({ pressed }) => [
-              {
-                backgroundColor: pressed ? '#585563' : '#757083',
-              },
-              styles.chatButton,
-            ]}
-          >
-            <Text style={styles.chatText}>Start Chatting</Text>
-          </Pressable>
-        </View>
-        <View style={styles.footer} />
-      </ImageBackground>
-    </View>
-  )
+          <View style={styles.wrapper}>
+            <TextInput
+              style={styles.inputName}
+              onChangeText={(name) => this.setState({ name: name })}
+              placeholder='Your Name'
+            />
+            <View style={styles.colorWrapper}>
+              <Text style={styles.colorText}>Choose Background Color:</Text>
+              <View style={styles.colorContainer}>
+                <Pressable
+                  style={[{ backgroundColor: '#090C08' }, styles.colorbutton]}
+                  onPress={() => this.setBgColor(this.colors.black)}
+                />
+                <Pressable
+                  style={[{ backgroundColor: '#474056' }, styles.colorbutton]}
+                  onPress={() => this.setBgColor(this.colors.purple)}
+                />
+                <Pressable
+                  style={[{ backgroundColor: '#8A95A5' }, styles.colorbutton]}
+                  onPress={() => this.setBgColor(this.colors.grey)}
+                />
+                <Pressable
+                  style={[{ backgroundColor: '#B9C6AE' }, styles.colorbutton]}
+                  onPress={() => this.setBgColor(this.colors.green)}
+                />
+              </View>
+            </View>
+            <Pressable
+              onPress={() =>
+                this.props.navigation.navigate('Chat', {
+                  name: this.state.name,
+                  bgColor: this.state.bgColor,
+                })
+              }
+              style={({ pressed }) => [
+                {
+                  backgroundColor: pressed ? '#585563' : '#757083',
+                },
+                styles.chatButton,
+              ]}
+            >
+              <Text style={styles.chatText}>Start Chatting</Text>
+            </Pressable>
+          </View>
+          <View style={styles.footer} />
+        </ImageBackground>
+      </View>
+    )
+  }
 }
 
 // Styles for Start-screen
