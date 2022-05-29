@@ -13,7 +13,7 @@ import BackgroundImage from '../img/background-image.png'
 
 // to silence all warnings that contain EventEmitter.removeListener
 import { LogBox } from 'react-native'
-LogBox.ignoreLogs(['EventEmitter.removeListener'])
+LogBox.ignoreLogs(['EventEmitter.removeListener'], ['useNativeDriver'])
 
 // build startscreen as function component
 export default class Start extends React.Component {
