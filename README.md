@@ -50,3 +50,33 @@ and location data.
 - Location data must be sent via the chat in a map view.
 - The chat interface and functionality must be created using the Gifted Chat library.
 - The app’s codebase must contain comments.
+
+## What technology did I use and why?
+I chose to create the mobile application using React Native due to the following considerations:
+
+- Develop and maintain the same codebase across different OS (iOS and Android)
+- Increased performance compared to Hybrid Apps as UI is rendered natively
+- Possibility to access device's APIs (camera, microphone, ...) (compared to PWA)
+- Use existing skills in JavaScript and React, no need to learn another programming language
+- Large and active community
+
+Further, I'm using XCode as an iOS simulator and Android Studio as an Android emulator.
+
+I use Expo as development environment to develop and test the app.
+
+I use the React Navigation third party library to navigate between screens.
+
+I use the React Native Gifted Chat library to create the UI of my chat app. The library has good GitHub statistics and is well documented. Further, it already provides predefined components for integral parts of the chat app:
+
+- Message bubbles 
+- A message input field
+- A send button
+- Options for displaying user names and avatars
+
+I'm working with WebSocket as a real-time application technology as it fulfills the following requirements of my chat application:
+
+- Transmitting in- and outgoing data immediately
+- Two-way communication between clients and server
+- Avoids data bloat compared to long polling
+
+I use Cloud Firestore as data storage platform for this application. real-time data
