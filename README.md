@@ -118,7 +118,7 @@ I use Cloud Firestore as data storage platform for this application. real-time d
   - npm install react-native-gifted-chat
 - Integrate Gifted Chat into application
   - import { GiftedChat } from 'react-native-gifted-chat';
-- Follow instructions to set up chat: https://github.com/FaridSafi/react-native-gifted-chat
+
 ### Set up Cloud Firestore as data storage platform
 - Install Firestore via Firebase
   - npm install firebase
