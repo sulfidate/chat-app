@@ -8,7 +8,7 @@ location.
 ### mobile view:
 <img width="200" src="https://user-images.githubusercontent.com/78739948/173253161-fe62d830-ed62-41e7-8ddf-80d21e1cbc0c.png"><img width="200" src="https://user-images.githubusercontent.com/78739948/173253192-eeeeaa13-716f-4881-8b44-41a5bc2cd182.png"><img width="200" src="https://user-images.githubusercontent.com/78739948/173253206-ba874123-27e1-413d-a6a7-33f913268e64.png"><img width="200" src="https://user-images.githubusercontent.com/78739948/173253218-1d408828-0266-4979-a9eb-9e8cb33bd259.png"><img width="200" src="https://user-images.githubusercontent.com/78739948/173253226-47f49bf5-d155-46ad-a33f-6f80afb5704f.png">
 
-### live app:
+
 
 
 ### Context
